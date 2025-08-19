@@ -1,0 +1,285 @@
+/* MedicineSearchPage.css - Clean & Simple */
+:root {
+    --primary-color: #2860a1;
+    --secondary-color: #7ba0c8;
+    --dark-accent: #1a3f6a;
+    --muted-color: #8c8c94;
+    --border-color: #b4bcbc;
+    --light-bg: #f8f9fa;
+}
+
+.medicine-search-container {
+    background-color: var(--light-bg);
+    min-height: calc(100vh - 76px);
+    padding: 2rem 0;
+}
+
+.medicine-search-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: white;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.medicine-search-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 12px 12px 0 0;
+}
+
+.medicine-search-title {
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.medicine-search-subtitle {
+    opacity: 0.9;
+    margin: 0;
+}
+
+.medicine-search-body {
+    padding: 2rem;
+}
+
+/* Search Section */
+.search-section-title {
+    color: var(--dark-accent);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.search-description {
+    color: var(--muted-color);
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #e8f4f8;
+    border-radius: 8px;
+    border-left: 3px solid var(--secondary-color);
+}
+
+.search-input {
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(123, 160, 200, 0.2);
+}
+
+/* Suggestions */
+.search-suggestions {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 1px solid #e9ecef;
+}
+
+.suggestion-title {
+    font-weight: 600;
+    color: var(--dark-accent);
+    margin-bottom: 0.5rem;
+}
+
+.suggestion-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.suggestion-tag {
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.suggestion-tag:hover {
+    background: var(--primary-color);
+}
+
+/* Loading */
+.loading-container {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+}
+
+.loading-text {
+    margin-top: 1rem;
+    color: var(--muted-color);
+    font-weight: 500;
+}
+
+/* Search Stats */
+.search-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.search-results-count {
+    font-weight: 600;
+    color: var(--dark-accent);
+}
+
+.search-time {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+}
+
+/* No Results */
+.no-results-container {
+    text-align: center;
+    padding: 2rem;
+    background: #f0f8ff;
+    border-radius: 8px;
+    border: 1px dashed var(--secondary-color);
+}
+
+.no-results-icon {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.no-results-title {
+    color: var(--dark-accent);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.no-results-text {
+    color: var(--muted-color);
+    margin-bottom: 1rem;
+}
+
+/* Medicine Cards - Simple & Clean */
+.medicine-card {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.medicine-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.medicine-card-header {
+    background: #f8f9fa;
+    padding: 1.25rem;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 8px 8px 0 0;
+}
+
+.medicine-name {
+    color: var(--dark-accent);
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0 0 0.75rem 0;
+}
+
+.medicine-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.medicine-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.badge-live {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.badge-database {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.badge-type {
+    background-color: #cce5ff;
+    color: #004085;
+    border: 1px solid #b3d7ff;
+}
+
+.medicine-card-body {
+    padding: 1.25rem;
+}
+
+.medicine-info-row {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.medicine-info-row:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--dark-accent);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.info-value {
+    color: #495057;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.price-highlight {
+    background-color: #28a745;
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.source-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.source-link:hover {
+    text-decoration: underline;
+}
+
+/* Remove the complex icon styling */
+.info-icon {
+    display: none;
+}

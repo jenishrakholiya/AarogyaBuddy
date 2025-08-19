@@ -1,0 +1,273 @@
+/* HomePage.css */
+:root {
+    --primary-color: #2860a1;
+    --secondary-color: #7ba0c8;
+    --dark-accent: #1a3f6a;
+    --muted-color: #8c8c94;
+    --border-color: #b4bcbc;
+    --dark-bg: #2c3434;
+}
+
+.dashboard-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.dashboard-greeting {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 2rem;
+    text-shadow: 0 2px 4px rgba(40, 96, 161, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+/* Quick Action Cards */
+.quick-action-card {
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    box-shadow: 0 4px 15px rgba(40, 96, 161, 0.08);
+    height: 100%;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+}
+
+.quick-action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(40, 96, 161, 0.15);
+    text-decoration: none;
+}
+
+.quick-action-card:hover::before {
+    transform: scaleX(1);
+}
+
+.quick-action-card .card-body {
+    padding: 2rem 1.5rem;
+}
+
+.quick-action-icon {
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.quick-action-card:hover .quick-action-icon {
+    transform: scale(1.1);
+}
+
+.quick-action-title {
+    color: var(--dark-accent);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.quick-action-text {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Health Snapshot Card */
+.health-snapshot-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(40, 96, 161, 0.1);
+    background: white;
+    height: 100%;
+}
+
+.health-snapshot-title {
+    color: var(--dark-accent);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.health-metric-box {
+    background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    width: 45%;
+}
+
+.health-metric-box:hover {
+    transform: translateY(-2px);
+    border-color: var(--secondary-color);
+    box-shadow: 0 8px 20px rgba(123, 160, 200, 0.2);
+}
+
+.health-metric-label {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.health-metric-value {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 0.25rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.health-metric-category {
+    color: var(--dark-accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Weight Progress Card */
+.weight-progress-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(40, 96, 161, 0.1);
+    background: white;
+    height: 100%;
+}
+
+.weight-progress-title {
+    color: var(--dark-accent);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.adherence-badge {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.chart-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.weight-input-group {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.weight-input {
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: white;
+}
+
+.weight-input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(123, 160, 200, 0.1);
+}
+
+.weight-log-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-accent) 100%);
+    border: none;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.weight-log-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(40, 96, 161, 0.3);
+}
+
+/* Loading and Error States */
+.dashboard-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    flex-direction: column;
+}
+
+.dashboard-loading .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: var(--primary-color);
+}
+
+.dashboard-loading p {
+    margin-top: 1rem;
+    color: var(--muted-color);
+    font-weight: 500;
+}
+
+.dashboard-error {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+    border-left: 4px solid #e53e3e;
+}
+
+.retry-btn {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.retry-btn:hover {
+    color: var(--dark-accent);
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-greeting {
+        font-size: 1.5rem;
+    }
+    
+    .health-metric-box {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .health-metric-value {
+        font-size: 1.8rem;
+    }
+    
+    .quick-action-card .card-body {
+        padding: 1.5rem 1rem;
+    }
+}

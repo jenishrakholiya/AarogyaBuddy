@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { Form, Button, Card, Col, Row, Spinner, Alert, Image } from 'react-bootstrap';
+import { Form, Button, Card, Col, Row, Spinner, Alert, Image, Container } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 import api from '../api/axiosConfig';
+import './ReportAnalysisPage.css'; // Import CSS file
 
 const ReportAnalysisPage = () => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -18,19 +19,15 @@ const ReportAnalysisPage = () => {
             setResult(null);
             setError('');
             
-            // Updated preview logic for both images and PDFs
             if (file.type.startsWith('image/')) {
-                // Preview for images
                 const reader = new FileReader();
                 reader.onloadend = () => {
                     setPreview(reader.result);
                 };
                 reader.readAsDataURL(file);
             } else if (file.type === 'application/pdf') {
-                // Preview for PDFs using blob URL
                 setPreview(URL.createObjectURL(file));
             } else {
-                // For unsupported files, clear preview
                 setPreview(null);
             }
         }
@@ -65,59 +62,141 @@ const ReportAnalysisPage = () => {
     };
 
     return (
-        <>
-            <Card className="mb-4 shadow-sm">
-                <Card.Body>
-                    <Card.Title as="h2" className="text-center mb-4">AI-Powered Report Analysis</Card.Title>
-                    <Form onSubmit={handleSubmit}>
-                        <Row className="align-items-center">
-                            <Col md={6} className="text-center">
-                                {preview ? (
-                                    // Conditionally render image or PDF preview
-                                    selectedFile.type === 'application/pdf' ? (
-                                        <embed src={preview} type="application/pdf" width="100%" height="300px" />
-                                    ) : (
-                                        <Image src={preview} thumbnail fluid style={{ maxHeight: '300px' }} />
-                                    )
-                                ) : (
-                                    <div className="p-5 bg-light rounded text-muted">
-                                        {selectedFile ? `Selected file: ${selectedFile.name}` : 'Your report preview will appear here.'}
-                                    </div>
-                                )}
-                            </Col>
-                            <Col md={6}>
-                                <p className="text-muted">
-                                    Upload a clear image or PDF of your medical report. Our AI will extract the text and provide a simplified summary.
-                                </p>
-                                <Form.Group controlId="formFile" className="mb-3">
-                                    <Form.Control 
-                                        type="file" 
-                                        accept="image/*,application/pdf" 
-                                        onChange={handleFileChange} 
-                                        ref={fileInputRef} 
-                                    />
-                                </Form.Group>
-                                <div className="d-grid">
-                                    <Button variant="primary" type="submit" size="lg" disabled={loading || !selectedFile}>
-                                        {loading ? <Spinner as="span" animation="border" size="sm" /> : 'Analyze Report'}
-                                    </Button>
-                                </div>
-                            </Col>
-                        </Row>
-                    </Form>
-                    {error && <Alert variant="danger" className="mt-4">{error}</Alert>}
-                </Card.Body>
-            </Card>
+        <div className="report-analysis-container">
+            <Container>
+                <Card className="report-analysis-card">
+                    <div className="report-analysis-header">
+                        <i className="bi bi-file-earmark-medical display-4 mb-3"></i>
+                        <h2 className="report-analysis-title">
+                            AI-Powered Medical Report Analysis
+                        </h2>
+                        <p className="report-analysis-subtitle">
+                            Upload your medical reports and get instant AI-powered insights
+                        </p>
+                    </div>
+                    
+                    <div className="report-analysis-body">
+                        <div className="upload-description">
+                            <i className="bi bi-info-circle me-2"></i>
+                            Upload a clear image or PDF of your medical report. Our AI will extract the text and provide a simplified summary with key insights.
+                        </div>
 
-            {result && (
-                <Card className="mt-4 shadow-lg">
-                    <Card.Header as="h3" className="text-center bg-light">AI Analysis Result</Card.Header>
-                    <Card.Body className="p-4">
-                        <ReactMarkdown>{result}</ReactMarkdown>
-                    </Card.Body>
+                        <div className="upload-instructions">
+                            <h5 className="instruction-title">
+                                <i className="bi bi-list-check me-2"></i>
+                                Upload Guidelines
+                            </h5>
+                            <ul className="instruction-list">
+                                <li className="instruction-item">
+                                    <i className="bi bi-check-circle instruction-icon"></i>
+                                    Ensure text is clear and readable
+                                </li>
+                                <li className="instruction-item">
+                                    <i className="bi bi-check-circle instruction-icon"></i>
+                                    Supported formats: JPG, PNG, PDF
+                                </li>
+                                <li className="instruction-item">
+                                    <i className="bi bi-check-circle instruction-icon"></i>
+                                    Maximum file size: 10MB
+                                </li>
+                                <li className="instruction-item">
+                                    <i className="bi bi-check-circle instruction-icon"></i>
+                                    Keep personal information in mind
+                                </li>
+                            </ul>
+                        </div>
+
+                        <Form onSubmit={handleSubmit}>
+                            <Row>
+                                <Col lg={6} className="mb-4">
+                                    <div className="preview-container">
+                                        {preview ? (
+                                            selectedFile.type === 'application/pdf' ? (
+                                                <embed 
+                                                    src={preview} 
+                                                    type="application/pdf" 
+                                                    className="preview-pdf"
+                                                />
+                                            ) : (
+                                                <Image 
+                                                    src={preview} 
+                                                    className="preview-image" 
+                                                    fluid 
+                                                />
+                                            )
+                                        ) : (
+                                            <div className="preview-placeholder">
+                                                <i className="bi bi-file-earmark-image preview-icon"></i>
+                                                <p className="preview-text">
+                                                    {selectedFile ? 
+                                                        `Selected: ${selectedFile.name}` : 
+                                                        'Your report preview will appear here'
+                                                    }
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </Col>
+                                
+                                <Col lg={6} className="mb-4">
+                                    <div className="upload-section">
+                                        <i className="bi bi-cloud-upload display-5 text-primary mb-3"></i>
+                                        <h5 className="mb-3">Upload Your Medical Report</h5>
+                                        
+                                        <Form.Group className="file-input-group">
+                                            <Form.Control 
+                                                type="file" 
+                                                accept="image/*,application/pdf" 
+                                                onChange={handleFileChange} 
+                                                ref={fileInputRef}
+                                                className="file-input"
+                                            />
+                                        </Form.Group>
+                                        
+                                        <Button 
+                                            className="analyze-btn" 
+                                            type="submit" 
+                                            disabled={loading || !selectedFile}
+                                        >
+                                            {loading ? (
+                                                <>
+                                                    <Spinner as="span" animation="border" size="sm" className="me-2" />
+                                                    Analyzing Report...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <i className="bi bi-cpu me-2"></i>
+                                                    Analyze Report
+                                                </>
+                                            )}
+                                        </Button>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Form>
+                        
+                        {error && (
+                            <Alert className="report-error-alert">
+                                <i className="bi bi-exclamation-triangle-fill me-2"></i>
+                                {error}
+                            </Alert>
+                        )}
+                    </div>
                 </Card>
-            )}
-        </>
+
+                {result && (
+                    <Card className="analysis-results-card">
+                        <div className="analysis-results-header">
+                            <i className="bi bi-clipboard-data display-4 mb-3"></i>
+                            <h3 className="mb-0">AI Analysis Results</h3>
+                        </div>
+                        <div className="analysis-results-body">
+                            <ReactMarkdown>{result}</ReactMarkdown>
+                        </div>
+                    </Card>
+                )}
+            </Container>
+        </div>
     );
 };
 

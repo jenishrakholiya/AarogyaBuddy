@@ -1,0 +1,220 @@
+/* OTPPage.css */
+.otp-container {
+    min-height: calc(100vh - 76px);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.otp-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(40, 96, 161, 0.1);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.otp-header {
+    background: linear-gradient(135deg, #2860a1 0%, #1a3f6a 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.otp-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #7ba0c8, #ffffff);
+    border-radius: 2px;
+}
+
+.otp-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.otp-title {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.otp-subtitle {
+    opacity: 0.8;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.otp-body {
+    padding: 2.5rem;
+}
+
+.otp-email-display {
+    background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+    border: 2px solid #b4bcbc;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    color: #1a3f6a;
+}
+
+.otp-input {
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    font-weight: 600;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.otp-input:focus {
+    border-color: #7ba0c8;
+    box-shadow: 0 0 0 3px rgba(123, 160, 200, 0.1);
+    background-color: white;
+    transform: scale(1.02);
+}
+
+.otp-input::placeholder {
+    color: #8c8c94;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+.otp-label {
+    font-weight: 600;
+    color: #1a3f6a;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.otp-btn {
+    background: linear-gradient(135deg, #2860a1 0%, #1a3f6a 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.otp-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 96, 161, 0.3);
+}
+
+.otp-btn:disabled {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.otp-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.otp-btn:hover::before {
+    left: 100%;
+}
+
+.otp-success-alert {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+    border-left: 4px solid #38a169;
+    color: #22543d;
+}
+
+.otp-error-alert {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+    border-left: 4px solid #e53e3e;
+    color: #742a2a;
+}
+
+.otp-no-email-alert {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+    border-left: 4px solid #e53e3e;
+    color: #742a2a;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.otp-register-link {
+    color: #2860a1;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.otp-register-link:hover {
+    color: #1a3f6a;
+    text-decoration: underline;
+}
+
+/* Animation for success state */
+.otp-success-icon {
+    display: inline-block;
+    animation: successPulse 2s infinite;
+}
+
+@keyframes successPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .otp-container {
+        padding: 1rem;
+    }
+    
+    .otp-header {
+        padding: 1.5rem;
+    }
+    
+    .otp-title {
+        font-size: 1.5rem;
+    }
+    
+    .otp-body {
+        padding: 2rem 1.5rem;
+    }
+    
+    .otp-input {
+        font-size: 1.2rem;
+        letter-spacing: 0.3rem;
+    }
+}

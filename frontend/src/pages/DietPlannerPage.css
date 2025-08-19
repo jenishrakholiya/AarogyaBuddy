@@ -1,0 +1,326 @@
+/* DietPlannerPage.css */
+:root {
+    --primary-color: #2860a1;
+    --secondary-color: #7ba0c8;
+    --dark-accent: #1a3f6a;
+    --muted-color: #8c8c94;
+    --border-color: #b4bcbc;
+    --dark-bg: #2c3434;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
+
+.diet-planner-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: calc(100vh - 76px);
+    padding: 2rem 0;
+}
+
+.diet-planner-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(40, 96, 161, 0.1);
+    background: white;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+}
+
+.diet-planner-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-accent) 100%);
+    color: white;
+    border-radius: 20px 20px 0 0;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.diet-planner-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), #ffffff);
+    border-radius: 2px;
+}
+
+.diet-planner-title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diet-planner-subtitle {
+    opacity: 0.9;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.diet-planner-body {
+    padding: 2.5rem;
+}
+
+/* Form Styling */
+.diet-form-group {
+    margin-bottom: 2rem;
+}
+
+.diet-form-label {
+    font-weight: 600;
+    color: var(--dark-accent);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.diet-form-control {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.diet-form-control:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(123, 160, 200, 0.1);
+    background-color: white;
+}
+
+.diet-form-select {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.diet-form-select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(123, 160, 200, 0.1);
+    background-color: white;
+}
+
+.diet-submit-btn {
+    background: linear-gradient(135deg, var(--success-color), #20c997);
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 3rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.diet-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+}
+
+.diet-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Results Card */
+.diet-results-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(40, 96, 161, 0.1);
+    background: white;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.diet-results-header {
+    background: linear-gradient(135deg, var(--success-color), #20c997);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+}
+
+.diet-results-body {
+    padding: 2.5rem;
+}
+
+.bmi-bmr-section {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+    border-radius: 16px;
+    border: 2px solid var(--secondary-color);
+}
+
+.metric-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.metric-title {
+    color: var(--dark-accent);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.metric-value {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.metric-category {
+    color: var(--muted-color);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Diet and Workout Plans */
+.plan-section {
+    margin-top: 2rem;
+}
+
+.plan-card {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.plan-card:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 8px 25px rgba(123, 160, 200, 0.15);
+}
+
+.plan-header-diet {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 1.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.plan-header-workout {
+    background: linear-gradient(135deg, #6f42c1, #e83e8c);
+    color: white;
+    padding: 1.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.plan-content {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    height: calc(100% - 80px);
+    overflow-y: auto;
+}
+
+/* Markdown Content Styling */
+.plan-content h1, .plan-content h2, .plan-content h3 {
+    color: var(--dark-accent);
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.plan-content h1 { font-size: 1.5rem; }
+.plan-content h2 { font-size: 1.3rem; }
+.plan-content h3 { font-size: 1.1rem; }
+
+.plan-content ul, .plan-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.plan-content li {
+    margin-bottom: 0.5rem;
+    color: #495057;
+    line-height: 1.6;
+}
+
+.plan-content p {
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.plan-content strong {
+    color: var(--dark-accent);
+    font-weight: 600;
+}
+
+/* Disclaimer */
+.diet-disclaimer {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff3cd 0%, #fdeaa7 100%);
+    border-left: 4px solid #856404;
+    color: #856404;
+    margin-top: 2rem;
+}
+
+/* Error Alert */
+.diet-error-alert {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+    border-left: 4px solid #e53e3e;
+    color: #742a2a;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .diet-planner-container {
+        padding: 1rem 0;
+    }
+    
+    .diet-planner-body,
+    .diet-results-body {
+        padding: 1.5rem;
+    }
+    
+    .diet-planner-title {
+        font-size: 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .metric-value {
+        font-size: 2rem;
+    }
+    
+    .bmi-bmr-section {
+        padding: 1.5rem;
+    }
+    
+    .plan-content {
+        height: auto;
+        min-height: 300px;
+    }
+}

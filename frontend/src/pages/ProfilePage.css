@@ -1,0 +1,52 @@
+/* ProfilePage.css */
+.profile-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: calc(100vh - 76px);
+}
+
+.profile-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(40, 96, 161, 0.1);
+    background: white;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, #2860a1 0%, #1a3f6a 100%);
+    color: white;
+    border-radius: 20px 20px 0 0;
+}
+
+.completion-badge {
+    background: linear-gradient(135deg, #7ba0c8 0%, #2860a1 100%);
+}
+
+.info-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.bmi-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2860a1 0%, #7ba0c8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.profile-loading {
+    text-align: center;
+}
+
+.profile-loading p {
+    margin-top: 1rem;
+    color: #6c757d;
+}

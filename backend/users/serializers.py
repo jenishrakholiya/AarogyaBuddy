@@ -10,10 +10,6 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserProfile
-        fields = ('age', 'gender', 'weight_kg', 'height_cm', 'profile_picture')
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)

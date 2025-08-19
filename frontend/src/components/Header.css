@@ -1,0 +1,46 @@
+/* Header.css */
+:root {
+    --primary-color: #2860a1;
+    --secondary-color: #7ba0c8;
+    --dark-accent: #1a3f6a;
+    --muted-color: #8c8c94;
+    --border-color: #b4bcbc;
+    --dark-bg: #2c3434;
+}
+
+.custom-navbar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-accent) 100%) !important;
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+.navbar-brand-custom {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-link-custom {
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
+.nav-link-custom:hover {
+    background-color: rgba(255,255,255,0.1);
+    transform: translateY(-1px);
+}
+
+.dropdown-custom .dropdown-menu {
+    border: none;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.user-badge {
+    background-color: var(--secondary-color);
+    color: var(--dark-accent);
+    font-weight: 600;
+}

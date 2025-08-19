@@ -1,0 +1,345 @@
+/* ReportAnalysisPage.css */
+:root {
+    --primary-color: #2860a1;
+    --secondary-color: #7ba0c8;
+    --dark-accent: #1a3f6a;
+    --muted-color: #8c8c94;
+    --border-color: #b4bcbc;
+    --dark-bg: #2c3434;
+}
+
+.report-analysis-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: calc(100vh - 76px);
+    padding: 2rem 0;
+}
+
+.report-analysis-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(40, 96, 161, 0.1);
+    background: white;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+}
+
+.report-analysis-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-accent) 100%);
+    color: white;
+    border-radius: 20px 20px 0 0;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.report-analysis-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), #ffffff);
+    border-radius: 2px;
+}
+
+.report-analysis-title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-analysis-subtitle {
+    opacity: 0.9;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.report-analysis-body {
+    padding: 2.5rem;
+}
+
+/* File Upload Section */
+.upload-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.upload-section:hover {
+    border-color: var(--secondary-color);
+    background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+}
+
+.upload-description {
+    color: var(--muted-color);
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #e8f4f8;
+    border-radius: 8px;
+    border-left: 3px solid var(--secondary-color);
+}
+
+/* Preview Section */
+.preview-container {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.preview-container:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(123, 160, 200, 0.1);
+}
+
+.preview-placeholder {
+    background: #f8f9fa;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--muted-color);
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.preview-icon {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.preview-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.preview-image {
+    max-height: 300px;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.preview-pdf {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 8px;
+}
+
+/* File Input Styling */
+.file-input-group {
+    margin-bottom: 2rem;
+}
+
+.file-input {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.file-input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(123, 160, 200, 0.1);
+    background-color: white;
+}
+
+.analyze-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-accent));
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 3rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.analyze-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 96, 161, 0.3);
+}
+
+.analyze-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Results Card */
+.analysis-results-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(40, 96, 161, 0.1);
+    background: white;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.analysis-results-header {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+}
+
+.analysis-results-body {
+    padding: 2.5rem;
+    background: #f8f9fa;
+    border-radius: 0 0 20px 20px;
+}
+
+/* Markdown Content Styling */
+.analysis-results-body h1, .analysis-results-body h2, .analysis-results-body h3 {
+    color: var(--dark-accent);
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.analysis-results-body h1 { font-size: 1.8rem; }
+.analysis-results-body h2 { font-size: 1.5rem; }
+.analysis-results-body h3 { font-size: 1.2rem; }
+
+.analysis-results-body ul, .analysis-results-body ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.analysis-results-body li {
+    margin-bottom: 0.75rem;
+    color: #495057;
+    line-height: 1.7;
+}
+
+.analysis-results-body p {
+    color: #495057;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.analysis-results-body strong {
+    color: var(--dark-accent);
+    font-weight: 700;
+}
+
+.analysis-results-body blockquote {
+    background: #e8f4f8;
+    border-left: 4px solid var(--secondary-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Error Alert */
+.report-error-alert {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+    border-left: 4px solid #e53e3e;
+    color: #742a2a;
+    margin-top: 2rem;
+}
+
+/* Upload Instructions */
+.upload-instructions {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.instruction-title {
+    color: var(--dark-accent);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.instruction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instruction-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    color: #495057;
+}
+
+.instruction-icon {
+    color: var(--secondary-color);
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .report-analysis-container {
+        padding: 1rem 0;
+    }
+    
+    .report-analysis-body,
+    .analysis-results-body {
+        padding: 1.5rem;
+    }
+    
+    .report-analysis-title {
+        font-size: 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .upload-section {
+        padding: 1.5rem;
+    }
+    
+    .preview-container {
+        min-height: 250px;
+    }
+    
+    .preview-placeholder {
+        min-height: 200px;
+        padding: 2rem 1rem;
+    }
+    
+    .preview-icon {
+        font-size: 3rem;
+    }
+    
+    .analyze-btn {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+}
