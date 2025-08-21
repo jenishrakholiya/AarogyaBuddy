@@ -296,7 +296,7 @@ const SymptomCheckerPage = () => {
                             
                             <Alert className="disclaimer-alert">
                                 <i className="bi bi-exclamation-triangle-fill me-2"></i>
-                                <strong>Medical Disclaimer:</strong> This is an AI-generated prediction for informational purposes only and does not substitute for professional medical advice. Please consult a qualified doctor for an accurate diagnosis and treatment plan.
+                                <strong>Medical Disclaimer:</strong> This is an informational purposes only and does not substitute for professional medical advice. Please consult a qualified doctor for an accurate diagnosis and treatment plan.
                             </Alert>
                         </div>
                     </Card>
@@ -311,7 +311,7 @@ const SymptomCheckerPage = () => {
                 <Card className="symptom-checker-card">
                     <div className="symptom-checker-header">
                         <i className="bi bi-search-heart display-4 mb-3"></i>
-                        <h2 className="symptom-checker-title">AI Symptom Checker</h2>
+                        <h2 className="symptom-checker-title"> Symptom Checker</h2>
                         <p className="symptom-checker-subtitle">Get personalized health insights based on your symptoms</p>
                     </div>
                     <div className="symptom-checker-body">

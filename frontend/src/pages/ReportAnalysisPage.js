@@ -68,17 +68,17 @@ const ReportAnalysisPage = () => {
                     <div className="report-analysis-header">
                         <i className="bi bi-file-earmark-medical display-4 mb-3"></i>
                         <h2 className="report-analysis-title">
-                            AI-Powered Medical Report Analysis
+                            Medical Report Analysis
                         </h2>
                         <p className="report-analysis-subtitle">
-                            Upload your medical reports and get instant AI-powered insights
+                            Upload your medical reports and get instant insights
                         </p>
                     </div>
                     
                     <div className="report-analysis-body">
                         <div className="upload-description">
                             <i className="bi bi-info-circle me-2"></i>
-                            Upload a clear image or PDF of your medical report. Our AI will extract the text and provide a simplified summary with key insights.
+                            Upload a clear image or PDF of your medical report. Our Website will extract the text and provide a simplified summary with key insights.
                         </div>
 
                         <div className="upload-instructions">
@@ -188,7 +188,7 @@ const ReportAnalysisPage = () => {
                     <Card className="analysis-results-card">
                         <div className="analysis-results-header">
                             <i className="bi bi-clipboard-data display-4 mb-3"></i>
-                            <h3 className="mb-0">AI Analysis Results</h3>
+                            <h3 className="mb-0">Analysis Results</h3>
                         </div>
                         <div className="analysis-results-body">
                             <ReactMarkdown>{result}</ReactMarkdown>

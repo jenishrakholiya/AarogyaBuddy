@@ -104,11 +104,6 @@ const renderMedicine = (med, index) => {
             <div className="medicine-card-header">
                 <h5 className="medicine-name">{med.medicine_name}</h5>
                 <div className="medicine-badges">
-                    {isScraped ? (
-                        <Badge className="medicine-badge badge-live">Live Result</Badge>
-                    ) : (
-                        <Badge className="medicine-badge badge-database">Database</Badge>
-                    )}
                     {med.medicine_type && (
                         <Badge className="medicine-badge badge-type">{med.medicine_type}</Badge>
                     )}

@@ -225,7 +225,7 @@ const DietPlannerPage = () => {
                             
                             <Alert className="diet-disclaimer">
                                 <i className="bi bi-info-circle-fill me-2"></i>
-                                <strong>Medical Disclaimer:</strong> This is an AI-generated estimate based on general guidelines. Please consult a healthcare professional or registered dietitian for personalized medical advice and before making significant changes to your diet or exercise routine.
+                                <strong>Medical Disclaimer:</strong> This is an estimate based on general guidelines. Please consult a healthcare professional or registered dietitian for personalized medical advice and before making significant changes to your diet or exercise routine.
                             </Alert>
                         </div>
                     </Card>

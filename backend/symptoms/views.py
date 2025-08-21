@@ -1,56 +1,60 @@
-# symptoms/views.py (Updated to use the new ImprovedDiseasePredictor)
-# - Assumes the predictor is initialized via ModelService in apps.py.
-# - Updated predict_disease to use predictor.predict() which returns top predictions with confidence.
-# - Enhanced response with top 3 predictions and confidence.
-# - Kept treatment lookup using full_dataset_df (now in predictor.full_dataset_df).
+# symptoms/views.py - FINAL CORRECTED VERSION
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
-from .ml_model import ModelService  # Import to initialize predictor
+from .ml_model import ModelService
 
-predictor = ModelService().predictor  # Access the initialized predictor
+# Create an instance of the service, but DO NOT initialize the model yet.
+# This line is safe to run at startup.
+model_service = ModelService()
 
 class SymptomCheckerView(APIView):
     """
-    API view that uses the improved disease prediction model to predict diseases
-    based on user-submitted symptoms. Returns top predictions with confidence.
+    API view that uses the improved disease prediction model.
+    The model is loaded lazily on the first request.
     """
     permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
-        symptom_data = request.data
-
-        # --- 1. Data Validation and Preparation ---
-        if predictor.full_dataset_df is None:
+        # --- 1. Get the predictor SAFELY at the beginning of the request ---
+        try:
+            # The model is loaded/trained only when this line is first called.
+            # This line defines the 'predictor' variable for the rest of the method.
+            predictor = model_service.get_predictor()
+        except Exception as e:
+            # If model training fails, send a user-friendly error.
             return Response(
-                {"error": "The prediction model is not ready. Please try again in a moment."},
+                {"error": f"Model is currently unavailable. Please contact support. Details: {str(e)}"},
                 status=status.HTTP_503_SERVICE_UNAVAILABLE
             )
 
-        mandatory_fields = ['age', 'gender', 'primary_symptom_duration']
-        optional_symptom_fields = [
-            'fever', 'cough', 'headache', 'sore_throat', 'fatigue', 'body_ache',
-            'runny_nose', 'sneezing', 'shortness_of_breath', 'chills', 'nausea',
-            'vomiting', 'diarrhea', 'abdominal_pain', 'joint_pain', 'rash',
-            'frequent_urination', 'burning_sensation_urination', 'back_pain',
-            'excessive_thirst', 'blurred_vision', 'anxiety', 'insomnia', 'depression'
-        ]
+        # --- 2. Data Validation and Preparation ---
+        # Now it's safe to use the predictor object
+        if predictor.full_dataset_df is None:
+            return Response(
+                {"error": "The prediction model is not ready (dataset not loaded). Please try again."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE
+            )
 
+        symptom_data = request.data
+        
+        mandatory_fields = ['age', 'gender', 'primary_symptom_duration']
         if not all(field in symptom_data for field in mandatory_fields):
             return Response(
                 {"error": f"Missing one or more mandatory fields: {mandatory_fields}"},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        model_input_data = {}
+        # Use the feature columns from the predictor to build the input
+        model_input_data = {field: symptom_data.get(field, 0) for field in predictor.feature_columns}
+        # Overwrite the mandatory fields to ensure they are correct
         for field in mandatory_fields:
             model_input_data[field] = symptom_data[field]
-        for field in optional_symptom_fields:
-            model_input_data[field] = symptom_data.get(field, 0)
 
-        # --- 2. Get Prediction from the Improved Model ---
+
+        # --- 3. Get Prediction from the Model ---
         try:
             prediction_result = predictor.predict(model_input_data)
             if "error" in prediction_result:
@@ -60,18 +64,15 @@ class SymptomCheckerView(APIView):
         except Exception as e:
             return Response({"error": f"An unexpected error occurred during prediction: {e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        # --- 3. Retrieve Treatment Information ---
+        # --- 4. Retrieve Treatment Information ---
         match = predictor.full_dataset_df[predictor.full_dataset_df['prognosis'] == predicted_disease]
 
         if match.empty:
-            return Response(
-                {"error": f"Treatment information for '{predicted_disease}' could not be found."},
-                status=status.HTTP_404_NOT_FOUND
-            )
-        
-        treatment_info = match.iloc[0].fillna('N/A')
+            treatment_info = {} # No treatment found, prepare empty dict
+        else:
+            treatment_info = match.iloc[0].fillna('N/A').to_dict()
 
-        # --- 4. Prepare and Send the Final Response ---
+        # --- 5. Prepare and Send the Final Response ---
         result = {
             'predicted_disease': predicted_disease,
             'confidence': prediction_result["confidence"],
