@@ -13,9 +13,6 @@ from django.conf import settings
 warnings.filterwarnings('ignore')
 
 class ImprovedDiseasePredictor:
-    """
-    Enhanced disease prediction model with robust training.
-    """
     def __init__(self, dataset_path='dataset.csv', min_samples=5):
         self.dataset_path = os.path.join(settings.BASE_DIR, dataset_path)
         self.feature_columns = [
@@ -34,7 +31,6 @@ class ImprovedDiseasePredictor:
         self.train_model()
 
     def load_and_filter(self):
-        """Load dataset and filter out classes with insufficient samples"""
         df = pd.read_csv(self.dataset_path)
         if 'prognosis' not in df.columns:
             raise ValueError("Target column 'prognosis' not found in dataset.")
@@ -48,7 +44,6 @@ class ImprovedDiseasePredictor:
         return df
 
     def preprocess_data(self, df):
-        """Preprocess data for the model."""
         features_in_df = [col for col in self.feature_columns if col in df.columns]
         X = df[features_in_df]
         y = df['prognosis']
@@ -59,7 +54,6 @@ class ImprovedDiseasePredictor:
         return X, y
 
     def train_model(self):
-        """Train model with improved parameters and validation"""
         df = self.load_and_filter()
         
         if df.empty:
